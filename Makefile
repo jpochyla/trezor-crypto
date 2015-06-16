@@ -6,6 +6,7 @@ CFLAGS   += $(OPTFLAGS) \
             -W \
             -Wall \
             -Wextra \
+            -Wcast-align \
             -Wimplicit-function-declaration \
             -Wredundant-decls \
             -Wstrict-prototypes \

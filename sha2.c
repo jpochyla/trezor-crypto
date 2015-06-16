@@ -553,11 +553,12 @@ void sha256_Final(sha2_byte digest[], SHA256_CTX* context) {
 			int	j;
 			for (j = 0; j < 8; j++) {
 				REVERSE32(context->state[j],context->state[j]);
-				*d++ = context->state[j];
+				/* *d++ = context->state[j]; */
 			}
+			MEMCPY_BCOPY((void*)d, (void*)context->state, SHA256_DIGEST_LENGTH);
 		}
 #else
-		MEMCPY_BCOPY(d, context->state, SHA256_DIGEST_LENGTH);
+		MEMCPY_BCOPY((void*)d, (void*)context->state, SHA256_DIGEST_LENGTH);
 #endif
 	}
 
